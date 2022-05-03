@@ -1,38 +1,43 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.link{
+  padding-left: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mail{
+ position: absolute;
+ top: 50px;
+ left:60px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.composeForm{
+  width: 50%;
+  border: 1px solid #404040;
+  border-top: #404040;
+  position: absolute;
+  right: 20px;
+  bottom: 5vh;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.newMessage{
+  width: 100%;
+  background-color: #404040;
+  color: #fefefe;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.sentBtn{
+ margin-top: 20px;
+background-color: #1976d2;
+}
+.deleteIcon{
+  margin-right: 0px;
+}
+@media only screen and (max-width:430px){
+  .composeForm{
+    width: 75%;
   }
 }
