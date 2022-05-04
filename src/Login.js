@@ -27,7 +27,8 @@ export function LoginPage() {
     }
     localStorage.setItem("currentUser",user.username);
     console.log(user);
-    const login=(user)=>fetch("http://localhost:7000/login",{
+    // const login=(user)=>fetch("http://localhost:7000/login",{
+      const login=(user)=>fetch("https://gmail-clone-pradeep.herokuapp.com/login",{
       method:"POST",
       headers:{"content-Type":"application/json"},
       body:JSON.stringify(user)

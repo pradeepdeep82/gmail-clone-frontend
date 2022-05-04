@@ -11,7 +11,8 @@ function Userlist({ user }) {
 export function Users() {
   const [users, setUsers] = useState([]);
   const userList = () => {
-    fetch("http://localhost:7000/users", {
+    // fetch("http://localhost:7000/users", {
+      fetch("https://gmail-clone-pradeep.herokuapp.com/users", {
       method: "GET",
       headers: {
         "content-Type": "application/json",

@@ -21,7 +21,8 @@ export function ComposeMail() {
       subject: subject,
       message: message,
     };
-    fetch("http://localhost:7000/compose", {
+    // fetch("http://localhost:7000/compose", {
+      fetch("https://gmail-clone-pradeep.herokuapp.com/compose", {
       method: "POST",
       headers: {
         "content-Type": "application/json",

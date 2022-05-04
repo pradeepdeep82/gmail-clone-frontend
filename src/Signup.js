@@ -26,7 +26,9 @@ export function SignUp() {
     }
     console.log(user);
 
-    const signUp=(user)=>fetch('http://localhost:7000/signup',{
+    const signUp=(user)=>{
+      // fetch('http://localhost:7000/signup',{
+        fetch('https://gmail-clone-pradeep.herokuapp.com/signup',{
       method:"POST",
       headers:{"content-Type":"application/json"},
       body:JSON.stringify(user)
@@ -42,6 +44,7 @@ export function SignUp() {
           alert(data.message);
         }
     })
+  }
     signUp(user);
 
   };

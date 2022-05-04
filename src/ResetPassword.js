@@ -1,53 +1,54 @@
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import * as React from "react";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export function ForgotPassword() {
+export function ResetPassword() {
   const history = useHistory();
- const theme = createTheme();
+  const { username, token } = useParams();
+  const theme = createTheme();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const user = {
-      username: data.get('email')
+    const password = {
+      password: data.get('password'),
+      confirmPassword: data.get("confirmPassword")
     };
-    console.log(user);
-
-    const forgotPassword = (user) => {
-      // fetch("http://localhost:7000/login/forgot-password", {
-        fetch("https://gmail-clone-pradeep.herokuapp.com/login/forgot-password", {
-        method: "POST",
+    console.log(password);
+    const resetPassword = () => {
+      //  fetch(`http://localhost:7000/reset-password/${username}/${token}`,{
+      fetch(`https://gmail-clone-pradeep.herokuapp.com/reset-password/${username}/${token}`, {
+        method: "PUT",
         headers: {
-          "content-Type": "application/json",
+          "content-Type": "application/json"
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(password)
       })
         .then(data => data.json())
         .then((data) => {
-          console.log(data);
-          if (data.statusCode === 200) {
+          if (data.statusCode === 400) {
             alert(data.message);
-            console.log(data.message);
+          } else if (data.statusCode === 402) {
+            alert(data.message);
+            history.push("/login/forgot-password");
+          }
+          else {
+            alert(data.message);
             history.push("/login");
-          } else {
-            alert(data.message);
-            console.log(data.message);
-            history.push("/signup");
           }
         });
     };
-    forgotPassword(user);
-
+    resetPassword();
   };
+
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -65,17 +66,27 @@ export function ForgotPassword() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Forgot Password
+              Reset Password
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="password"
+                label="Password"
+                name="password"
+                type="password"
+
+                autoFocus />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="confirmPassword"
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
                 autoFocus />
 
 
@@ -85,20 +96,20 @@ export function ForgotPassword() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                forgot password
+                Reset password
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link onClick={() => history.push("/login")} href="#" variant="body2">
-                    Sign In
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link onClick={() => history.push("/signup")} variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+              {/* <Grid container>
+              <Grid item xs>
+                <Link onClick={() => history.push("/login")} href="#" variant="body2">
+                  Sign In
+                </Link>
               </Grid>
+              <Grid item>
+                <Link onClick={() => history.push("/signup")} variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid> */}
             </Box>
           </Box>
         </Container>

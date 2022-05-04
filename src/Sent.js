@@ -10,7 +10,8 @@ export function Sent() {
   // const [subject,setSubject]=useState([]);
   // const [to, setto]=useState([]);
   const sentMsg = (user) => {
-     fetch("http://localhost:7000/sent", {
+    //  fetch("http://localhost:7000/sent", {
+      fetch("https://gmail-clone-pradeep.herokuapp.com/sent", {
       method: "GET",
       headers: {
         "content-Type": "application/json",
@@ -30,7 +31,8 @@ export function Sent() {
   };
   const deleteMsg=(index)=>{
     const currentUser = localStorage.getItem("currentUser");
-    fetch("http://localhost:7000/sent",{
+    // fetch("http://localhost:7000/sent",{
+      fetch("https://gmail-clone-pradeep.herokuapp.com/sent",{
       method:"PUT",
       headers:{
         "content-Type": "application/json",

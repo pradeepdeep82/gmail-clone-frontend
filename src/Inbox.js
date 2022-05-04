@@ -11,7 +11,8 @@ export function Inbox() {
   const [subject,setSubject]=useState([]);
   const [from, setFrom]=useState([]);
   const inboxMsg = (user) => {
-     fetch("http://localhost:7000/inbox", {
+    //  fetch("http://localhost:7000/inbox", {
+      fetch("https://gmail-clone-pradeep.herokuapp.com/inbox", {
       method: "GET",
       headers: {
         "content-Type": "application/json",
@@ -33,7 +34,8 @@ export function Inbox() {
 
   const deleteMsg=(index)=>{
     const currentUser = localStorage.getItem("currentUser");
-    fetch("http://localhost:7000/inbox",{
+    // fetch("http://localhost:7000/inbox",{
+      fetch("https://gmail-clone-pradeep.herokuapp.com/inbox",{
       method:"PUT",
       headers:{
         "content-Type": "application/json",
