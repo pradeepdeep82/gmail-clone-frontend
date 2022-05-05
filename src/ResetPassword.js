@@ -25,7 +25,7 @@ export function ResetPassword() {
     const resetPassword = () => {
       //  fetch(`http://localhost:7000/reset-password/${username}/${token}`,{
       fetch(`https://gmail-clone-pradeep.herokuapp.com/reset-password/${username}/${token}`, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "content-Type": "application/json"
         },
