@@ -58,7 +58,8 @@ function App() {
           <Route exact path="/login/forgot-password">
             <ForgotPassword />
           </Route>
-          <Route exact path="/reset-password/:username/:token">
+          {/* <Route exact path="/reset-password/:username/:token"> */}
+          <Route exact path="/reset-password">
             <ResetPassword />
           </Route>
           <Route path="/signup">
